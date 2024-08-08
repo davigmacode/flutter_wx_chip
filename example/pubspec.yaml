@@ -32,6 +32,9 @@ dependencies:
     sdk: flutter
   wx_chip:
     path: ../
+  wx_text: ^3.0.0
+  theme_patrol: ^3.2.2
+  choice: ^2.3.1
 
 dev_dependencies:
   flutter_test:
