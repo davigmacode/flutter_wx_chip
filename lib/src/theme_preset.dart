@@ -17,14 +17,9 @@ abstract class WxChipThemePreset extends WxChipThemeData
 
   @override
   WxDrivenChipStyle get style {
-    return const WxDrivenChipStyle().merge(super.style).copyWith(
-          direction: Axis.horizontal,
-          borderRadius: const BorderRadius.all(Radius.circular(15)),
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          spacing: 8,
-          minHeight: 25,
-          iconSize: 16,
-        );
+    return const WxDrivenChipStyle()
+        .merge(super.style)
+        .copyWith(direction: Axis.horizontal);
   }
 }
 
@@ -48,6 +43,17 @@ class WxChipThemeM2 extends WxChipThemePreset {
 
   @override
   get baseTheme => WxSheetThemeToggleM2(context);
+
+  @override
+  get style => super.style.copyWith(
+        minHeight: 32.0,
+        adaptiveSpacing: false,
+        padding: const EdgeInsets.symmetric(horizontal: 8),
+        borderRadius: const BorderRadius.all(Radius.circular(16)),
+        checkmarkWeight: 2,
+        iconSize: 18.0,
+        spacing: 8,
+      );
 }
 
 class WxChipThemeM3 extends WxChipThemePreset {
@@ -59,6 +65,17 @@ class WxChipThemeM3 extends WxChipThemePreset {
 
   @override
   get baseTheme => WxSheetThemeToggleM3(context);
+
+  @override
+  get style => super.style.copyWith(
+        minHeight: 32.0,
+        adaptiveSpacing: false,
+        padding: const EdgeInsets.symmetric(horizontal: 8),
+        borderRadius: const BorderRadius.all(Radius.circular(8)),
+        checkmarkWeight: 2,
+        iconSize: 18.0,
+        spacing: 8,
+      );
 }
 
 class WxChipThemeIOS extends WxChipThemePreset {
@@ -70,4 +87,15 @@ class WxChipThemeIOS extends WxChipThemePreset {
 
   @override
   get baseTheme => WxSheetThemeToggleIOS(context);
+
+  @override
+  get style => super.style.copyWith(
+        minHeight: 32.0,
+        adaptiveSpacing: false,
+        padding: const EdgeInsets.symmetric(horizontal: 8),
+        borderRadius: const BorderRadius.all(Radius.circular(8)),
+        checkmarkWeight: 2,
+        iconSize: 18.0,
+        spacing: 8,
+      );
 }

@@ -1,5 +1,8 @@
 import 'package:flutter/widgets.dart';
 import 'package:wx_sheet/wx_sheet.dart';
+import 'package:animated_checkmark/animated_checkmark.dart';
+import 'style_driven.dart';
+import 'style.dart';
 import 'theme.dart';
 import 'theme_data.dart';
 
@@ -91,7 +94,29 @@ class WxChip extends WxSheet<WxChipThemeData> {
   });
 
   @override
+  WxChipStyle get effectiveStyle =>
+      const WxDrivenChipStyle().merge(super.effectiveStyle);
+
+  @override
   WxChipThemeData getTheme(BuildContext context) {
     return WxChipTheme.of(context);
+  }
+
+  @override
+  WxSheetWrapper? get outerWrapper {
+    return (state, child) {
+      if (child != null) {
+        final style = state.effectiveStyle;
+        if (style is WxChipStyle) {
+          child = CheckmarkTheme.merge(
+            color: style.checkmarkColor ?? style.foregroundColor,
+            size: style.checkmarkSize ?? style.iconSize,
+            weight: style.checkmarkWeight,
+            child: child,
+          );
+        }
+      }
+      return child;
+    };
   }
 }

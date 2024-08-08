@@ -10,7 +10,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  wx_sheet: ^4.1.0
+  wx_sheet: ^4.1.1
+  animated_checkmark: ^3.1.0
 
 dev_dependencies:
   flutter_test:

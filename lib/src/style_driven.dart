@@ -97,6 +97,9 @@ class WxDrivenChipStyle extends WxChipStyle
     super.subtitleMaxLines,
     super.titleWeight,
     super.subtitleWeight,
+    super.checkmarkColor,
+    super.checkmarkSize,
+    super.checkmarkWeight,
     this.focusedStyle,
     this.hoveredStyle,
     this.pressedStyle,
@@ -235,6 +238,9 @@ class WxDrivenChipStyle extends WxChipStyle
     subtitleMaxLines,
     titleWeight,
     subtitleWeight,
+    checkmarkColor,
+    checkmarkSize,
+    checkmarkWeight,
     bool? inherits,
     WxChipStyle? focusedStyle,
     WxChipStyle? hoveredStyle,
@@ -312,6 +318,9 @@ class WxDrivenChipStyle extends WxChipStyle
       subtitleMaxLines: subtitleMaxLines,
       titleWeight: titleWeight,
       subtitleWeight: subtitleWeight,
+      checkmarkColor: checkmarkColor,
+      checkmarkSize: checkmarkSize,
+      checkmarkWeight: checkmarkWeight,
     );
     return WxDrivenChipStyle.fromAncestor(
       ancestor,
@@ -329,6 +338,7 @@ class WxDrivenChipStyle extends WxChipStyle
 
   @override
   WxDrivenChipStyle merge(other) {
+    if (other == null) return this;
     final ancestor = super.merge(other);
     final result = WxDrivenChipStyle.fromAncestor(
       ancestor,
@@ -354,12 +364,12 @@ class WxDrivenChipStyle extends WxChipStyle
     if (other is WxDrivenSheetStyle) {
       return result.copyWith(
         inherits: other.inherits,
-        focusedStyle: WxChipStyle.from(other.focusedStyle),
-        hoveredStyle: WxChipStyle.from(other.hoveredStyle),
-        pressedStyle: WxChipStyle.from(other.pressedStyle),
-        disabledStyle: WxChipStyle.from(other.disabledStyle),
-        selectedStyle: WxChipStyle.from(other.selectedStyle),
-        indeterminateStyle: WxChipStyle.from(other.indeterminateStyle),
+        focusedStyle: WxChipStyle.fromAncestor(other.focusedStyle),
+        hoveredStyle: WxChipStyle.fromAncestor(other.hoveredStyle),
+        pressedStyle: WxChipStyle.fromAncestor(other.pressedStyle),
+        disabledStyle: WxChipStyle.fromAncestor(other.disabledStyle),
+        selectedStyle: WxChipStyle.fromAncestor(other.selectedStyle),
+        indeterminateStyle: WxChipStyle.fromAncestor(other.indeterminateStyle),
       );
     }
     return result;
