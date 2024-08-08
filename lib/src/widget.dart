@@ -103,6 +103,15 @@ class WxChip extends WxSheet<WxChipThemeData> {
   }
 
   @override
+  WxChipStyle? getInheritedStyle(BuildContext context, bool inherits) {
+    if (inherits) {
+      final parentStyle = getParentStyle(context);
+      return const WxDrivenChipStyle().merge(parentStyle).merge(effectiveStyle);
+    }
+    return effectiveStyle;
+  }
+
+  @override
   WxSheetWrapper? get outerWrapper {
     return (state, child) {
       if (child != null) {
