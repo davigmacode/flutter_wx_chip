@@ -126,15 +126,15 @@ class WxDrivenChipStyle extends WxChipStyle
 
   /// Create a [WxDrivenChipStyle] with value
   /// from another [WxDrivenChipStyle].
-  WxDrivenChipStyle.from(WxDrivenChipStyle super.other)
-      : focusedStyle = other.focusedStyle,
-        hoveredStyle = other.hoveredStyle,
-        pressedStyle = other.pressedStyle,
-        loadingStyle = other.loadingStyle,
-        disabledStyle = other.disabledStyle,
-        selectedStyle = other.selectedStyle,
-        indeterminateStyle = other.indeterminateStyle,
-        inherits = other.inherits,
+  WxDrivenChipStyle.from(WxDrivenChipStyle? super.other)
+      : focusedStyle = other?.focusedStyle,
+        hoveredStyle = other?.hoveredStyle,
+        pressedStyle = other?.pressedStyle,
+        loadingStyle = other?.loadingStyle,
+        disabledStyle = other?.disabledStyle,
+        selectedStyle = other?.selectedStyle,
+        indeterminateStyle = other?.indeterminateStyle,
+        inherits = other?.inherits,
         super.from();
 
   /// Create a [WxDrivenChipStyle] from a resolver callback

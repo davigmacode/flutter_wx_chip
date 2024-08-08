@@ -1,4 +1,3 @@
-import 'package:flutter/widgets.dart';
 import 'package:wx_sheet/wx_sheet.dart';
 import 'package:animated_checkmark/animated_checkmark.dart';
 import 'style_driven.dart';
@@ -98,12 +97,12 @@ class WxChip extends WxSheet<WxChipThemeData> {
       const WxDrivenChipStyle().merge(super.effectiveStyle);
 
   @override
-  WxChipThemeData getTheme(BuildContext context) {
+  WxChipThemeData getTheme(context) {
     return WxChipTheme.of(context);
   }
 
   @override
-  WxChipStyle? getInheritedStyle(BuildContext context, bool inherits) {
+  WxChipStyle? getInheritedStyle(context, inherits) {
     if (inherits) {
       final parentStyle = getParentStyle(context);
       return const WxDrivenChipStyle().merge(parentStyle).merge(effectiveStyle);
