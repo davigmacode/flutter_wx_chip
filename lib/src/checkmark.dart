@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wx_chip/wx_event.dart';
+import 'package:wx_sheet/wx_event.dart';
 import 'package:animated_checkmark/animated_checkmark.dart';
 
 class DrivenCheckmark extends Checkmark implements DrivenProperty<Widget> {

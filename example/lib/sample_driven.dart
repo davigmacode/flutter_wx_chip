@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wx_chip/wx_chip.dart';
 import 'package:choice/choice.dart';
-import 'package:wx_chip/wx_event.dart';
 import 'wrapper.dart';
 
 class SampleDriven extends StatelessWidget {

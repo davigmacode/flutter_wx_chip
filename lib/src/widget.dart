@@ -38,6 +38,8 @@ class WxChip extends WxSheet<WxChipThemeData> {
     super.overlay,
     super.overlayColor,
     super.overlayOpacity,
+    super.overlayShape,
+    super.overlayExtent,
     super.elevationColor,
     super.elevation,
     super.tileAlign,
@@ -70,6 +72,11 @@ class WxChip extends WxSheet<WxChipThemeData> {
     super.iconColor,
     super.iconOpacity,
     super.iconSize,
+    super.spinnerColor,
+    super.spinnerBackgroundColor,
+    super.spinnerSize,
+    super.spinnerWidth,
+    super.spinnerRounded,
     super.focusedStyle,
     super.hoveredStyle,
     super.pressedStyle,
@@ -93,8 +100,9 @@ class WxChip extends WxSheet<WxChipThemeData> {
   });
 
   @override
-  WxChipStyle get effectiveStyle =>
-      const WxDrivenChipStyle().merge(super.effectiveStyle);
+  WxChipStyle get effectiveStyle {
+    return const WxDrivenChipStyle().merge(super.effectiveStyle);
+  }
 
   @override
   WxChipThemeData getTheme(context) {
@@ -102,7 +110,7 @@ class WxChip extends WxSheet<WxChipThemeData> {
   }
 
   @override
-  WxChipStyle? getInheritedStyle(context, inherits) {
+  WxChipStyle getInheritedStyle(context, inherits) {
     if (inherits) {
       final parentStyle = getParentStyle(context);
       return const WxDrivenChipStyle().merge(parentStyle).merge(effectiveStyle);
@@ -111,14 +119,27 @@ class WxChip extends WxSheet<WxChipThemeData> {
   }
 
   @override
+  get styleModifier {
+    return (style) {
+      if (style is WxChipStyle) {
+        return style.copyWith(
+          checkmarkColor: style.checkmarkColor ?? style.foregroundColor,
+          checkmarkSize: style.checkmarkSize ?? style.iconSize,
+        );
+      }
+      return style;
+    };
+  }
+
+  @override
   WxSheetWrapper? get outerWrapper {
     return (state, child) {
       if (child != null) {
-        final style = state.effectiveStyle;
+        final style = state.style;
         if (style is WxChipStyle) {
           child = CheckmarkTheme.merge(
-            color: style.checkmarkColor ?? style.foregroundColor,
-            size: style.checkmarkSize ?? style.iconSize,
+            color: style.checkmarkColor,
+            size: style.checkmarkSize,
             weight: style.checkmarkWeight,
             child: child,
           );
