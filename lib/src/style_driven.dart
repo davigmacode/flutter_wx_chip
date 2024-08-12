@@ -314,6 +314,9 @@ class WxDrivenChipStyle extends WxChipStyle
       iconColor: iconColor,
       iconOpacity: iconOpacity,
       iconSize: iconSize,
+      checkmarkColor: checkmarkColor,
+      checkmarkSize: checkmarkSize,
+      checkmarkWeight: checkmarkWeight,
       spinnerColor: spinnerColor,
       spinnerBackgroundColor: spinnerBackgroundColor,
       spinnerSize: spinnerSize,
@@ -329,9 +332,6 @@ class WxDrivenChipStyle extends WxChipStyle
       subtitleMaxLines: subtitleMaxLines,
       titleWeight: titleWeight,
       subtitleWeight: subtitleWeight,
-      checkmarkColor: checkmarkColor,
-      checkmarkSize: checkmarkSize,
-      checkmarkWeight: checkmarkWeight,
     );
     return WxDrivenChipStyle.fromAncestor(
       ancestor,

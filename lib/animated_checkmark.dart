@@ -1,4 +1,3 @@
 library animated_checkmark;
 
-export 'package:animated_checkmark/animated_checkmark.dart';
-export 'src/checkmark.dart';
+export 'package:wx_sheet/animated_checkmark.dart';

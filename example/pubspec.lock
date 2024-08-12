@@ -268,10 +268,10 @@ packages:
     dependency: transitive
     description:
       name: wx_anchor
-      sha256: "811bea507974faed1d6244f75d451d3d300bf0d74cafbd480ec52a1431ce8389"
+      sha256: ac54096088e71fb05363b2beca86b685a9cf1fd17581a15a0c46cfcb5877144c
       url: "https://pub.dev"
     source: hosted
-    version: "2.1.0"
+    version: "2.1.1"
   wx_box:
     dependency: transitive
     description:
@@ -291,10 +291,10 @@ packages:
     dependency: transitive
     description:
       name: wx_sheet
-      sha256: e0cd48289bd241d57ebfb53484c1f528beed490390eb8fb9dcb84f9d39177605
+      sha256: fd216f1801711afe9a1ad3926b3956bbea3682bcf3567af446fce87413e909ed
       url: "https://pub.dev"
     source: hosted
-    version: "4.3.0"
+    version: "4.4.1"
   wx_text:
     dependency: "direct main"
     description:

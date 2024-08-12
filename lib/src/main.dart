@@ -6,4 +6,3 @@ export 'theme_preset.dart';
 export 'theme.dart';
 export 'types.dart';
 export 'widget.dart';
-export 'checkmark.dart';

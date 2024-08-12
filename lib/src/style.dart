@@ -1,16 +1,6 @@
-import 'dart:ui';
 import 'package:wx_sheet/wx_sheet.dart';
 
 class WxChipStyle extends WxSheetStyle {
-  /// The color of the checkmark.
-  final Color? checkmarkColor;
-
-  /// The size of the checkmark. If null, the checkmark expands to fit its parent.
-  final double? checkmarkSize;
-
-  /// The stroke width of the checkmark.
-  final double? checkmarkWeight;
-
   /// Create a raw [WxChipStyle].
   const WxChipStyle({
     super.variant,
@@ -76,25 +66,16 @@ class WxChipStyle extends WxSheetStyle {
     super.spinnerSize,
     super.spinnerWidth,
     super.spinnerRounded,
-    this.checkmarkColor,
-    this.checkmarkSize,
-    this.checkmarkWeight,
+    super.checkmarkColor,
+    super.checkmarkSize,
+    super.checkmarkWeight,
   });
 
   /// Create a [WxChipStyle] from another [WxChipStyle] style
-  WxChipStyle.from(WxChipStyle? super.other)
-      : checkmarkColor = other?.checkmarkColor,
-        checkmarkSize = other?.checkmarkSize,
-        checkmarkWeight = other?.checkmarkWeight,
-        super.from();
+  WxChipStyle.from(WxChipStyle? super.other) : super.from();
 
   /// Create a [WxChipStyle] from another [WxSheetStyle] style
-  WxChipStyle.fromAncestor(
-    super.other, {
-    this.checkmarkColor,
-    this.checkmarkSize,
-    this.checkmarkWeight,
-  }) : super.from();
+  WxChipStyle.fromAncestor(super.other) : super.from();
 
   /// Creates a copy of this [WxChipStyle] but with
   /// the given fields replaced with the new values.
@@ -159,6 +140,9 @@ class WxChipStyle extends WxSheetStyle {
     iconColor,
     iconOpacity,
     iconSize,
+    checkmarkColor,
+    checkmarkSize,
+    checkmarkWeight,
     spinnerColor,
     spinnerBackgroundColor,
     spinnerSize,
@@ -174,9 +158,6 @@ class WxChipStyle extends WxSheetStyle {
     subtitleMaxLines,
     titleWeight,
     subtitleWeight,
-    Color? checkmarkColor,
-    double? checkmarkSize,
-    double? checkmarkWeight,
   }) {
     final ancestor = super.copyWith(
       direction: direction,
@@ -238,6 +219,9 @@ class WxChipStyle extends WxSheetStyle {
       iconColor: iconColor,
       iconOpacity: iconOpacity,
       iconSize: iconSize,
+      checkmarkColor: checkmarkColor,
+      checkmarkSize: checkmarkSize,
+      checkmarkWeight: checkmarkWeight,
       spinnerColor: spinnerColor,
       spinnerBackgroundColor: spinnerBackgroundColor,
       spinnerSize: spinnerSize,
@@ -254,53 +238,20 @@ class WxChipStyle extends WxSheetStyle {
       titleWeight: titleWeight,
       subtitleWeight: subtitleWeight,
     );
-    return WxChipStyle.fromAncestor(
-      ancestor,
-      checkmarkColor: checkmarkColor ?? this.checkmarkColor,
-      checkmarkSize: checkmarkSize ?? this.checkmarkSize,
-      checkmarkWeight: checkmarkWeight ?? this.checkmarkWeight,
-    );
+    return WxChipStyle.fromAncestor(ancestor);
   }
 
   @override
   WxChipStyle merge(other) {
     if (other == null) return this;
     final ancestor = super.merge(other);
-    final result = WxChipStyle.fromAncestor(
-      ancestor,
-      checkmarkColor: checkmarkColor,
-      checkmarkSize: checkmarkSize,
-      checkmarkWeight: checkmarkWeight,
-    );
-    if (other is WxChipStyle) {
-      return result.copyWith(
-        checkmarkColor: other.checkmarkColor,
-        checkmarkSize: other.checkmarkSize,
-        checkmarkWeight: other.checkmarkWeight,
-      );
-    }
-    return result;
+    return WxChipStyle.fromAncestor(ancestor);
   }
 
   /// Linearly interpolate between two [WxChipStyle] objects.
   static WxChipStyle? lerp(WxChipStyle? a, WxChipStyle? b, double t) {
     if (a == null && b == null) return null;
     final ancestor = WxSheetStyle.lerp(a, b, t);
-    return WxChipStyle.fromAncestor(
-      ancestor,
-      checkmarkColor: Color.lerp(a?.checkmarkColor, b?.checkmarkColor, t),
-      checkmarkSize: lerpDouble(a?.checkmarkSize, b?.checkmarkSize, t),
-      checkmarkWeight: lerpDouble(a?.checkmarkWeight, b?.checkmarkWeight, t),
-    );
-  }
-
-  @override
-  toMap() {
-    return super.toMap()
-      ..addAll({
-        'checkmarkColor': checkmarkColor,
-        'checkmarkSize': checkmarkSize,
-        'checkmarkWeight': checkmarkWeight,
-      });
+    return WxChipStyle.fromAncestor(ancestor);
   }
 }

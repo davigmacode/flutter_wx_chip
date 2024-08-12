@@ -1,5 +1,4 @@
 import 'package:wx_sheet/wx_sheet.dart';
-import 'package:animated_checkmark/animated_checkmark.dart';
 import 'style_driven.dart';
 import 'style.dart';
 import 'theme.dart';
@@ -116,36 +115,5 @@ class WxChip extends WxSheet<WxChipThemeData> {
       return const WxDrivenChipStyle().merge(parentStyle).merge(effectiveStyle);
     }
     return effectiveStyle;
-  }
-
-  @override
-  get styleModifier {
-    return (style) {
-      if (style is WxChipStyle) {
-        return style.copyWith(
-          checkmarkColor: style.checkmarkColor ?? style.foregroundColor,
-          checkmarkSize: style.checkmarkSize ?? style.iconSize,
-        );
-      }
-      return style;
-    };
-  }
-
-  @override
-  WxSheetWrapper? get outerWrapper {
-    return (state, child) {
-      if (child != null) {
-        final style = state.style;
-        if (style is WxChipStyle) {
-          child = CheckmarkTheme.merge(
-            color: style.checkmarkColor,
-            size: style.checkmarkSize,
-            weight: style.checkmarkWeight,
-            child: child,
-          );
-        }
-      }
-      return child;
-    };
   }
 }
