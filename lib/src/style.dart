@@ -62,14 +62,14 @@ class WxChipStyle extends WxSheetStyle {
     super.iconColor,
     super.iconOpacity,
     super.iconSize,
+    super.checkmarkColor,
+    super.checkmarkSize,
+    super.checkmarkWeight,
     super.spinnerColor,
     super.spinnerBackgroundColor,
     super.spinnerSize,
     super.spinnerWidth,
     super.spinnerRounded,
-    super.checkmarkColor,
-    super.checkmarkSize,
-    super.checkmarkWeight,
   });
 
   /// Create a [WxChipStyle] from another [WxChipStyle] style

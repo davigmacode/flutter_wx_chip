@@ -296,6 +296,7 @@ class WxDrivenChipStyle extends WxChipStyle
       textOverflow: textOverflow,
       textSoftWrap: textSoftWrap,
       textWidthBasis: textWidthBasis,
+      adaptiveForegroundColor: adaptiveForegroundColor,
       foregroundColor: foregroundColor,
       foregroundOpacity: foregroundOpacity,
       foregroundAlpha: foregroundAlpha,

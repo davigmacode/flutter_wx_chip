@@ -4,6 +4,7 @@ import 'package:wx_chip/wx_chip.dart';
 import 'package:wx_text/wx_text.dart';
 import 'theme_picker.dart';
 import 'sample_appearance.dart';
+import 'sample_appearance_mix.dart';
 import 'sample_disabled.dart';
 import 'sample_severity.dart';
 import 'sample_compound.dart';
@@ -90,6 +91,8 @@ class MyHomePage extends StatelessWidget {
               ThemePicker(),
               SizedBox(height: 40),
               SampleAppearance(),
+              SizedBox(height: 20),
+              SampleAppearanceMix(),
               SizedBox(height: 20),
               SampleDisabled(),
               SizedBox(height: 20),

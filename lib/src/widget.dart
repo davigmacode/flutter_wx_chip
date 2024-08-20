@@ -1,3 +1,4 @@
+import 'package:wx_sheet/wx_event.dart';
 import 'package:wx_sheet/wx_sheet.dart';
 import 'style_driven.dart';
 import 'style.dart';
@@ -7,6 +8,12 @@ import 'theme_data.dart';
 /// The sheet widget serves as the building block for many Widgetarian components,
 /// providing a base layer for customization.
 class WxChip extends WxSheet<WxChipThemeData> {
+  /// Whether to display a leading checkmark before the chip content.
+  final bool? leadingCheckmark;
+
+  /// Whether to display a trailing checkmark after the chip content.
+  final bool? trailingCheckmark;
+
   /// Create a sheet widget
   const WxChip({
     super.key,
@@ -51,6 +58,7 @@ class WxChip extends WxSheet<WxChipThemeData> {
     super.textOverflow,
     super.textSoftWrap,
     super.textWidthBasis,
+    super.adaptiveForegroundColor,
     super.foregroundColor,
     super.foregroundOpacity,
     super.foregroundAlpha,
@@ -95,6 +103,8 @@ class WxChip extends WxSheet<WxChipThemeData> {
     super.onSelected,
     super.leading,
     super.trailing,
+    this.leadingCheckmark,
+    this.trailingCheckmark,
     super.child,
   });
 
@@ -116,4 +126,24 @@ class WxChip extends WxSheet<WxChipThemeData> {
     }
     return effectiveStyle;
   }
+
+  /// Returns a `DrivenCheckmark` if `leadingCheckmark` is true,
+  /// `DrivenChild.all(null)` if `leadingCheckmark` is false,
+  /// otherwise returns the default leading content.
+  @override
+  get leading => leadingCheckmark == true
+      ? const DrivenCheckmark()
+      : leadingCheckmark == false
+          ? const DrivenChild.all(null)
+          : super.leading;
+
+  /// Returns a `DrivenCheckmark` if `trailingCheckmark` is true,
+  /// `DrivenChild.all(null)` if `trailingCheckmark` is false,
+  /// otherwise returns the default trailing content.
+  @override
+  get trailing => trailingCheckmark == true
+      ? const DrivenCheckmark()
+      : trailingCheckmark == false
+          ? const DrivenChild.all(null)
+          : super.trailing;
 }

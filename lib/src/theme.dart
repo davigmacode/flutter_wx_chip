@@ -57,7 +57,7 @@ class WxChipTheme extends WxSheetTheme<WxChipThemeData> {
   /// ```
   static WxChipThemeData? maybeOf(BuildContext context) {
     final parent = WxSheetTheme.maybeOf<WxChipThemeData>(context);
-    return WxChipThemeData.from(parent);
+    return WxChipThemeData.fromAncestor(parent);
   }
 
   /// The [data] from the closest instance of

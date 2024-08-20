@@ -1,11 +1,27 @@
+import 'package:wx_sheet/wx_event.dart';
 import 'package:wx_sheet/wx_sheet.dart';
 import 'style.dart';
 
 class WxChipThemeData extends WxSheetThemeData<WxChipThemeData> {
+  /// Whether to display a leading checkmark before the chip content.
+  final bool leadingCheckmark;
+
+  /// Whether to display a trailing checkmark after the chip content.
+  final bool trailingCheckmark;
+
+  @override
+  get leading => leadingCheckmark ? const DrivenCheckmark() : super.leading;
+
+  @override
+  get trailing => trailingCheckmark ? const DrivenCheckmark() : super.trailing;
+
   /// Creates a theme data that can be used for [SheetTheme].
   const WxChipThemeData({
     super.curve,
     super.duration,
+    super.variant,
+    super.size,
+    super.severity,
     WxChipStyle super.style = const WxChipStyle(),
     WxSheetStyleResolver<WxChipStyle>? super.styleResolver,
     super.overlay,
@@ -16,18 +32,35 @@ class WxChipThemeData extends WxSheetThemeData<WxChipThemeData> {
     super.mouseCursor,
     super.leading,
     super.trailing,
+    this.leadingCheckmark = false,
+    this.trailingCheckmark = false,
   }) : super(animated: true);
 
   WxChipThemeData.from([
-    super.other,
-    super.fallback = const WxChipThemeData(),
-  ]) : super.from();
+    WxChipThemeData? super.other,
+    WxChipThemeData super.fallback = const WxChipThemeData(),
+  ])  : leadingCheckmark = other?.leadingCheckmark ?? fallback.leadingCheckmark,
+        trailingCheckmark =
+            other?.trailingCheckmark ?? fallback.trailingCheckmark,
+        super.from();
+
+  WxChipThemeData.fromAncestor(
+    WxSheetThemeData<WxChipThemeData>? other, {
+    WxChipThemeData fallback = const WxChipThemeData(),
+    bool? leadingSpinner,
+    bool? trailingSpinner,
+  })  : leadingCheckmark = leadingSpinner ?? fallback.leadingCheckmark,
+        trailingCheckmark = trailingSpinner ?? fallback.trailingCheckmark,
+        super.from(other, fallback);
 
   @override
   WxChipThemeData copyWith({
     animated,
     curve,
     duration,
+    variant,
+    size,
+    severity,
     style,
     styleResolver,
     overlay,
@@ -38,6 +71,8 @@ class WxChipThemeData extends WxSheetThemeData<WxChipThemeData> {
     mouseCursor,
     leading,
     trailing,
+    bool? leadingCheckmark,
+    bool? trailingCheckmark,
   }) {
     final ancestor = super.copyWith(
       animated: animated,
@@ -54,7 +89,11 @@ class WxChipThemeData extends WxSheetThemeData<WxChipThemeData> {
       leading: leading,
       trailing: trailing,
     );
-    return WxChipThemeData.from(ancestor);
+    return WxChipThemeData.fromAncestor(
+      ancestor,
+      leadingSpinner: leadingCheckmark,
+      trailingSpinner: trailingCheckmark,
+    );
   }
 
   @override
@@ -63,6 +102,6 @@ class WxChipThemeData extends WxSheetThemeData<WxChipThemeData> {
     if (other == null) return this;
 
     final ancestor = super.merge(other);
-    return WxChipThemeData.from(ancestor);
+    return WxChipThemeData.fromAncestor(ancestor);
   }
 }
