@@ -21,6 +21,9 @@ class WxChipTheme extends WxSheetTheme<WxChipThemeData> {
     Key? key,
     Curve? curve,
     Duration? duration,
+    WxSheetVariant? variant,
+    WxSheetSize? size,
+    Color? severity,
     WxChipStyle? style,
     WxSheetStyleResolver<WxChipStyle>? styleResolver,
     bool? overlay,
@@ -28,6 +31,8 @@ class WxChipTheme extends WxSheetTheme<WxChipThemeData> {
     bool? focusable,
     bool? disabled,
     MouseCursor? mouseCursor,
+    Widget? leading,
+    Widget? trailing,
     WxChipThemeData? data,
     required Widget child,
   }) {
@@ -36,6 +41,9 @@ class WxChipTheme extends WxSheetTheme<WxChipThemeData> {
       data: data,
       curve: curve,
       duration: duration,
+      variant: variant,
+      size: size,
+      severity: severity,
       style: style,
       styleResolver: styleResolver,
       overlay: overlay,
@@ -43,6 +51,8 @@ class WxChipTheme extends WxSheetTheme<WxChipThemeData> {
       focusable: focusable,
       disabled: disabled,
       mouseCursor: mouseCursor,
+      leading: leading,
+      trailing: trailing,
       child: child,
     );
   }

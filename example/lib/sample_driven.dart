@@ -42,7 +42,6 @@ class SampleDriven extends StatelessWidget {
               WxChip(
                 severity: Colors.red,
                 variant: WxChipVariant.outlined,
-                selectedStyle: const WxChipStyle(variant: WxChipVariant.tonal),
                 selected: choice.selected('outlined'),
                 onSelected: (val) => choice.select('outlined', val),
                 trailingCheckmark: true,
