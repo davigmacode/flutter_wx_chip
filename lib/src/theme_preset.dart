@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:wx_sheet/wx_sheet.dart';
 import 'theme_data.dart';
 import 'style_driven.dart';
+import 'types.dart';
 
 abstract class WxChipThemePreset extends WxChipThemeData
     with WxSheetThemePreset<WxChipThemeData> {
@@ -16,10 +17,18 @@ abstract class WxChipThemePreset extends WxChipThemeData
   final BuildContext context;
 
   @override
+  WxSheetVariant? get variant => WxChipVariant.tonal;
+
+  @override
   WxDrivenChipStyle get style {
-    return const WxDrivenChipStyle()
-        .merge(super.style)
-        .copyWith(direction: Axis.horizontal);
+    return const WxDrivenChipStyle().merge(super.style);
+  }
+
+  @override
+  WxDrivenChipStyle baseStyle(data) {
+    return const WxDrivenChipStyle(
+      adaptiveSpacing: true,
+    );
   }
 }
 
@@ -45,15 +54,20 @@ class WxChipThemeM2 extends WxChipThemePreset {
   get baseTheme => WxSheetThemeToggleM2(context);
 
   @override
-  get style => super.style.copyWith(
-        minHeight: 32.0,
-        adaptiveSpacing: false,
-        padding: const EdgeInsets.symmetric(horizontal: 8),
-        borderRadius: const BorderRadius.all(Radius.circular(16)),
-        checkmarkWeight: 2,
-        iconSize: 18.0,
-        spacing: 8,
-      );
+  baseStyle(data) {
+    return super.baseStyle(data).copyWith(
+          minHeight: 32.0,
+          padding: EdgeInsets.only(
+            left: data.hasLeading ? 8 : 12,
+            right: data.hasTrailing ? 8 : 12,
+          ),
+          borderRadius: const BorderRadius.all(Radius.circular(16)),
+          textStyle: textTheme.bodyLarge,
+          checkmarkWeight: 2,
+          iconSize: 18.0,
+          spacing: 8,
+        );
+  }
 }
 
 class WxChipThemeM3 extends WxChipThemePreset {
@@ -67,15 +81,20 @@ class WxChipThemeM3 extends WxChipThemePreset {
   get baseTheme => WxSheetThemeToggleM3(context);
 
   @override
-  get style => super.style.copyWith(
-        minHeight: 32.0,
-        adaptiveSpacing: false,
-        padding: const EdgeInsets.symmetric(horizontal: 8),
-        borderRadius: const BorderRadius.all(Radius.circular(8)),
-        checkmarkWeight: 2,
-        iconSize: 18.0,
-        spacing: 8,
-      );
+  baseStyle(data) {
+    return super.baseStyle(data).copyWith(
+          minHeight: 32.0,
+          padding: EdgeInsets.only(
+            left: data.hasLeading ? 8 : 16,
+            right: data.hasTrailing ? 8 : 16,
+          ),
+          borderRadius: const BorderRadius.all(Radius.circular(8)),
+          textStyle: textTheme.labelLarge,
+          checkmarkWeight: 2,
+          iconSize: 18.0,
+          spacing: 8,
+        );
+  }
 }
 
 class WxChipThemeIOS extends WxChipThemePreset {
@@ -89,13 +108,18 @@ class WxChipThemeIOS extends WxChipThemePreset {
   get baseTheme => WxSheetThemeToggleIOS(context);
 
   @override
-  get style => super.style.copyWith(
-        minHeight: 32.0,
-        adaptiveSpacing: false,
-        padding: const EdgeInsets.symmetric(horizontal: 8),
-        borderRadius: const BorderRadius.all(Radius.circular(8)),
-        checkmarkWeight: 2,
-        iconSize: 18.0,
-        spacing: 8,
-      );
+  baseStyle(data) {
+    return super.baseStyle(data).copyWith(
+          minHeight: 32.0,
+          padding: EdgeInsets.only(
+            left: data.hasLeading ? 8 : 16,
+            right: data.hasTrailing ? 8 : 16,
+          ),
+          borderRadius: const BorderRadius.all(Radius.circular(8)),
+          textStyle: textTheme.bodyLarge,
+          checkmarkWeight: 2,
+          iconSize: 18.0,
+          spacing: 8,
+        );
+  }
 }
