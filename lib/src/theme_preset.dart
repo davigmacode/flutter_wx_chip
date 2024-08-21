@@ -39,8 +39,24 @@ class WxChipThemeAdaptive extends WxChipThemePreset {
     super.duration,
   });
 
+  WxChipThemePreset get platformTheme {
+    WxChipThemePreset theme = WxChipThemeM2(context);
+    if (isAndroid && useMaterial3) {
+      theme = WxChipThemeM3(context);
+    } else if (isIOS) {
+      theme = WxChipThemeIOS(context);
+    }
+    return theme;
+  }
+
   @override
-  get baseTheme => WxSheetThemeToggleAdaptive(context);
+  get baseTheme => platformTheme.baseTheme;
+
+  @override
+  get effectiveStyle => platformTheme.effectiveStyle;
+
+  @override
+  get styleResolver => platformTheme.styleResolver;
 }
 
 class WxChipThemeM2 extends WxChipThemePreset {
