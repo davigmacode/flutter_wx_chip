@@ -3,6 +3,7 @@ import 'package:wx_chip/wx_chip.dart';
 import 'package:wx_avatar/wx_avatar.dart';
 import 'package:choice/choice.dart';
 import 'wrapper.dart';
+import 'image.dart';
 
 class SampleCompound extends StatelessWidget {
   const SampleCompound({super.key});
@@ -37,8 +38,9 @@ class SampleCompound extends StatelessWidget {
                 variant: WxChipVariant.outlined,
                 onPressed: () {},
                 leading: const WxAvatar.circle(
-                  image: NetworkImage('https://i.pravatar.cc/50?u=2'),
                   radius: 12,
+                  clipBehavior: Clip.antiAlias,
+                  child: PlatformImage('https://i.pravatar.cc/50?u=2'),
                 ),
                 borderRadius: BorderRadius.circular(16),
                 padding: const EdgeInsets.fromLTRB(4, 0, 8, 0),
