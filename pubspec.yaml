@@ -1,6 +1,6 @@
 name: wx_chip
 description: Restructure the Flutter Chips to allow for simpler styling and theming, ensuring it's not limited to specific platforms.
-version: 1.0.0
+version: 1.0.1
 homepage: https://github.com/davigmacode/flutter_wx_chip
 
 topics:
