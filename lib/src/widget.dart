@@ -5,8 +5,8 @@ import 'style.dart';
 import 'theme.dart';
 import 'theme_data.dart';
 
-/// The sheet widget serves as the building block for many Widgetarian components,
-/// providing a base layer for customization.
+/// The `WxChip` widget serves as the building block for many Widgetarian components,
+/// providing a base layer for customization with a chip-like appearance.
 class WxChip extends WxSheet<WxChipThemeData> {
   /// Whether to display a leading checkmark before the chip content.
   final bool? leadingCheckmark;
@@ -14,7 +14,9 @@ class WxChip extends WxSheet<WxChipThemeData> {
   /// Whether to display a trailing checkmark after the chip content.
   final bool? trailingCheckmark;
 
-  /// Create a sheet widget
+  /// Creates a chip widget.
+  ///
+  /// Inherits all the properties from the base class [WxSheet].
   const WxChip({
     super.key,
     super.animated,

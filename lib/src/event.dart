@@ -1,7 +1,7 @@
 import 'package:wx_sheet/wx_event.dart';
 import 'package:wx_sheet/wx_sheet.dart';
 
-/// Interactive events that [Button] can take on
+/// Interactive events that [WxChip] can take on
 /// when receiving input from the user.
 class WxChipEvent extends WxSheetEvent {
   const WxChipEvent(super.value);

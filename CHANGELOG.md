@@ -1,3 +1,7 @@
-## 0.0.1
+## 1.0.0
 
-* TODO: Describe initial release.
+* Added chip widget.
+* Added chip style.
+* Added chip theme widget.
+* Added chip theme data.
+* Added chip theme preset.

@@ -15,7 +15,7 @@ class WxChipThemeData extends WxSheetThemeData<WxChipThemeData> {
   @override
   get trailing => trailingCheckmark ? const DrivenCheckmark() : super.trailing;
 
-  /// Creates a theme data that can be used for [SheetTheme].
+  /// Creates a theme data that can be used for [WxChipTheme].
   const WxChipThemeData({
     super.curve,
     super.duration,

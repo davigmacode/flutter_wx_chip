@@ -6,15 +6,15 @@ import 'style.dart';
 
 class WxChipTheme extends WxSheetTheme<WxChipThemeData> {
   /// Creates a theme that controls
-  /// how descendant [WxSheet]s should look like.
+  /// how descendant [WxChip]s should look like.
   const WxChipTheme({
     super.key,
     required super.data,
     required super.child,
   });
 
-  /// Creates an [WxSheetTheme] that controls the style of
-  /// descendant widgets, and merges in the current [WxSheetTheme], if any.
+  /// Creates an [WxChipTheme] that controls the style of
+  /// descendant widgets, and merges in the current [WxChipTheme], if any.
   ///
   /// The [style] and [child] arguments must not be null.
   static Widget merge({
@@ -63,7 +63,7 @@ class WxChipTheme extends WxSheetTheme<WxChipThemeData> {
   /// Typical usage is as follows:
   ///
   /// ```dart
-  /// WxSheetThemeData theme = WxSheetTheme.of(context);
+  /// WxChipThemeData theme = WxChipTheme.of(context);
   /// ```
   static WxChipThemeData? maybeOf(BuildContext context) {
     final parent = WxSheetTheme.maybeOf<WxChipThemeData>(context);
@@ -76,7 +76,7 @@ class WxChipTheme extends WxSheetTheme<WxChipThemeData> {
   /// Typical usage is as follows:
   ///
   /// ```dart
-  /// WxSheetThemeData theme = WxSheetTheme.of(context);
+  /// WxChipThemeData theme = WxChipTheme.of(context);
   /// ```
   static WxChipThemeData of(BuildContext context) {
     final parent = WxChipTheme.maybeOf(context);
