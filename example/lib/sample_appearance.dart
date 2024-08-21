@@ -14,35 +14,39 @@ class SampleAppearance extends StatelessWidget {
       builder: (choice, _) {
         return Wrapper(
           title: 'Appearance',
-          child: Wrap(
-            spacing: 10,
-            runSpacing: 10,
-            children: [
-              WxChip(
-                variant: WxChipVariant.tonal,
-                selected: choice.selected('tonal'),
-                onSelected: (val) => choice.select('tonal', val),
-                child: const Text('Tonal'),
-              ),
-              WxChip(
-                variant: WxChipVariant.elevated,
-                selected: choice.selected('elevated'),
-                onSelected: (val) => choice.select('elevated', val),
-                child: const Text('Elevated'),
-              ),
-              WxChip(
-                variant: WxChipVariant.filled,
-                selected: choice.selected('filled'),
-                onSelected: (val) => choice.select('filled', val),
-                child: const Text('Filled'),
-              ),
-              WxChip(
-                variant: WxChipVariant.outlined,
-                selected: choice.selected('outlined'),
-                onSelected: (val) => choice.select('outlined', val),
-                child: const Text('Outlined'),
-              ),
-            ],
+          source: 'sample_appearance.dart',
+          maxWidth: 400,
+          child: Center(
+            child: Wrap(
+              spacing: 10,
+              runSpacing: 10,
+              children: [
+                WxChip(
+                  variant: WxChipVariant.tonal,
+                  selected: choice.selected('tonal'),
+                  onSelected: (val) => choice.select('tonal', val),
+                  child: const Text('Tonal'),
+                ),
+                WxChip(
+                  variant: WxChipVariant.elevated,
+                  selected: choice.selected('elevated'),
+                  onSelected: (val) => choice.select('elevated', val),
+                  child: const Text('Elevated'),
+                ),
+                WxChip(
+                  variant: WxChipVariant.filled,
+                  selected: choice.selected('filled'),
+                  onSelected: (val) => choice.select('filled', val),
+                  child: const Text('Filled'),
+                ),
+                WxChip(
+                  variant: WxChipVariant.outlined,
+                  selected: choice.selected('outlined'),
+                  onSelected: (val) => choice.select('outlined', val),
+                  child: const Text('Outlined'),
+                ),
+              ],
+            ),
           ),
         );
       },

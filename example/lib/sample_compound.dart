@@ -15,6 +15,8 @@ class SampleCompound extends StatelessWidget {
       builder: (choice, _) {
         return Wrapper(
           title: 'Composition',
+          source: 'sample_compound.dart',
+          maxWidth: 400,
           child: Column(
             children: [
               WxChip(
