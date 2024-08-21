@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
       initialTheme: 'm2',
       builder: (context, theme, child) {
         return MaterialApp(
-          title: 'WxAlert Demo',
+          title: 'WxChip Demo',
           theme: theme.lightData,
           darkTheme: theme.darkData,
           themeMode: theme.mode,
