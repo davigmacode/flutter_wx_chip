@@ -1,4 +1,4 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:wx_sheet/wx_sheet.dart';
 import 'theme_data.dart';
 import 'theme_preset.dart';
@@ -9,7 +9,7 @@ class WxChipTheme extends WxSheetTheme<WxChipThemeData> {
   /// how descendant [WxChip]s should look like.
   const WxChipTheme({
     super.key,
-    required super.data,
+    required WxChipThemeData super.data,
     required super.child,
   });
 
@@ -36,24 +36,30 @@ class WxChipTheme extends WxSheetTheme<WxChipThemeData> {
     WxChipThemeData? data,
     required Widget child,
   }) {
-    return WxSheetTheme.merge<WxChipThemeData>(
-      key: key,
-      data: data,
-      curve: curve,
-      duration: duration,
-      variant: variant,
-      size: size,
-      severity: severity,
-      style: style,
-      styleResolver: styleResolver,
-      overlay: overlay,
-      feedback: feedback,
-      focusable: focusable,
-      disabled: disabled,
-      mouseCursor: mouseCursor,
-      leading: leading,
-      trailing: trailing,
-      child: child,
+    return Builder(
+      builder: (BuildContext context) {
+        final parent = WxChipTheme.of(context);
+        return WxChipTheme(
+          key: key,
+          data: parent.merge(data).copyWith(
+                curve: curve,
+                duration: duration,
+                variant: variant,
+                size: size,
+                severity: severity,
+                style: style,
+                styleResolver: styleResolver,
+                overlay: overlay,
+                feedback: feedback,
+                focusable: focusable,
+                disabled: disabled,
+                mouseCursor: mouseCursor,
+                leading: leading,
+                trailing: trailing,
+              ),
+          child: child,
+        );
+      },
     );
   }
 
@@ -66,8 +72,14 @@ class WxChipTheme extends WxSheetTheme<WxChipThemeData> {
   /// WxChipThemeData theme = WxChipTheme.of(context);
   /// ```
   static WxChipThemeData? maybeOf(BuildContext context) {
-    final parent = WxSheetTheme.maybeOf<WxChipThemeData>(context);
-    return WxChipThemeData.fromAncestor(parent);
+    final parentTheme =
+        context.dependOnInheritedWidgetOfExactType<WxChipTheme>();
+    if (parentTheme != null) {
+      return WxChipThemeData.fromAncestor(parentTheme.data);
+    }
+
+    final globalTheme = Theme.of(context).extension<WxChipThemeData>();
+    return globalTheme;
   }
 
   /// The [data] from the closest instance of
